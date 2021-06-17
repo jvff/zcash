@@ -18,7 +18,9 @@ typedef struct {
     secp256k1_ge_storage (*pre_g_128)[]; /* odd multiples of 2^128*generator */
 } secp256k1_ecmult_context;
 
+#ifndef SECP256K1_ECMULT_IMPL_H
 static const size_t SECP256K1_ECMULT_CONTEXT_PREALLOCATED_SIZE;
+#endif
 static void secp256k1_ecmult_context_init(secp256k1_ecmult_context *ctx);
 static void secp256k1_ecmult_context_build(secp256k1_ecmult_context *ctx, void **prealloc);
 static void secp256k1_ecmult_context_finalize_memcpy(secp256k1_ecmult_context *dst, const secp256k1_ecmult_context *src);
