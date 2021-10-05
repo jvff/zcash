@@ -435,35 +435,29 @@ TxVersionInfo CurrentTxVersionInfo(
     int nHeight,
     bool requireSprout)
 {
+    TxVersionInfo versionInfo;
+
     if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_ZFUTURE)) {
-        return {
-            .fOverwintered =   true,
-            .nVersionGroupId = ZFUTURE_VERSION_GROUP_ID,
-            .nVersion =        ZFUTURE_TX_VERSION
-        };
+        versionInfo.fOverwintered =   true;
+        versionInfo.nVersionGroupId = ZFUTURE_VERSION_GROUP_ID;
+        versionInfo.nVersion =        ZFUTURE_TX_VERSION;
     } else if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_NU5) && !requireSprout) {
-        return {
-            .fOverwintered =   true,
-            .nVersionGroupId = ZIP225_VERSION_GROUP_ID,
-            .nVersion =        ZIP225_TX_VERSION
-        };
+        versionInfo.fOverwintered =   true;
+        versionInfo.nVersionGroupId = ZIP225_VERSION_GROUP_ID;
+        versionInfo.nVersion =        ZIP225_TX_VERSION;
     } else if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_SAPLING)) {
-        return {
-            .fOverwintered =   true,
-            .nVersionGroupId = SAPLING_VERSION_GROUP_ID,
-            .nVersion =        SAPLING_TX_VERSION
-        };
+        versionInfo.fOverwintered =   true;
+        versionInfo.nVersionGroupId = SAPLING_VERSION_GROUP_ID;
+        versionInfo.nVersion =        SAPLING_TX_VERSION;
     } else if (consensus.NetworkUpgradeActive(nHeight, Consensus::UPGRADE_OVERWINTER)) {
-        return {
-            .fOverwintered =   true,
-            .nVersionGroupId = OVERWINTER_VERSION_GROUP_ID,
-            .nVersion =        OVERWINTER_TX_VERSION
-        };
+        versionInfo.fOverwintered =   true;
+        versionInfo.nVersionGroupId = OVERWINTER_VERSION_GROUP_ID;
+        versionInfo.nVersion =        OVERWINTER_TX_VERSION;
     } else {
-        return {
-            .fOverwintered =   false,
-            .nVersionGroupId = 0,
-            .nVersion =        CTransaction::SPROUT_MIN_CURRENT_VERSION
-        };
+        versionInfo.fOverwintered =   false;
+        versionInfo.nVersionGroupId = 0;
+        versionInfo.nVersion =        CTransaction::SPROUT_MIN_CURRENT_VERSION;
     }
+
+    return versionInfo;
 }
