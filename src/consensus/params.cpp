@@ -8,7 +8,6 @@
 #include <key_io.h>
 #include <script/standard.h>
 #include "upgrades.h"
-#include "util.h"
 
 namespace Consensus {
     bool Params::NetworkUpgradeActive(int nHeight, Consensus::UpgradeIndex idx) const {

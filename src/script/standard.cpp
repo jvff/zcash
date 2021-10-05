@@ -7,7 +7,6 @@
 
 #include "pubkey.h"
 #include "script/script.h"
-#include "util.h"
 #include "utilstrencodings.h"
 
 
